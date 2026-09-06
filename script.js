@@ -1,3 +1,53 @@
+const welcomeScene = document.querySelector("[data-welcome-scene]");
+const welcomeSkip = document.querySelector("[data-welcome-skip]");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let welcomeTimer;
+
+function hasSeenWelcome() {
+  try {
+    return sessionStorage.getItem("boiling-bubbles-welcome") === "seen";
+  } catch {
+    return false;
+  }
+}
+
+function rememberWelcome() {
+  try {
+    sessionStorage.setItem("boiling-bubbles-welcome", "seen");
+  } catch {
+    // The introduction can still close when storage is unavailable.
+  }
+}
+
+function finishWelcome(immediate = false) {
+  if (!welcomeScene || welcomeScene.hidden) return;
+  clearTimeout(welcomeTimer);
+  rememberWelcome();
+  document.body.classList.remove("is-welcoming");
+
+  if (immediate) {
+    welcomeScene.hidden = true;
+    return;
+  }
+
+  welcomeScene.classList.add("is-leaving");
+  setTimeout(() => { welcomeScene.hidden = true; }, 430);
+}
+
+if (welcomeScene) {
+  if (reduceMotion || hasSeenWelcome()) {
+    finishWelcome(true);
+  } else {
+    document.body.classList.add("is-welcoming");
+    requestAnimationFrame(() => welcomeScene.classList.add("is-playing"));
+    welcomeTimer = setTimeout(() => finishWelcome(), 3000);
+    welcomeSkip.addEventListener("click", () => finishWelcome());
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") finishWelcome();
+    }, { once: true });
+  }
+}
+
 const products = [
   {
     id: "garden-stickers",
