@@ -252,7 +252,7 @@ modal.querySelector("[data-modal-favorite]").addEventListener("click", () => tog
 document.querySelectorAll("[data-show-favorites]").forEach((button) => {
   button.addEventListener("click", () => {
     selectFilter("favorites");
-    document.querySelector("#collections").scrollIntoView({ behavior: "smooth" });
+    smoothScrollTo(document.querySelector("#collections"));
     closeMenu();
   });
 });
@@ -284,8 +284,69 @@ document.addEventListener("click", (event) => {
   if (!event.target.closest(".nav-wrap")) closeMenu();
 });
 
+let scrollAnimationFrame = 0;
+
+function smoothScrollTo(target) {
+  if (!target) return;
+
+  cancelAnimationFrame(scrollAnimationFrame);
+  const start = window.scrollY;
+  const headerOffset = 92;
+  const destination = Math.max(0, target.getBoundingClientRect().top + start - headerOffset);
+  const distance = destination - start;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || Math.abs(distance) < 2) {
+    window.scrollTo(0, destination);
+    return;
+  }
+
+  const duration = Math.min(420, Math.max(240, Math.abs(distance) * 0.22));
+  const startedAt = performance.now();
+
+  function animate(now) {
+    const progress = Math.min((now - startedAt) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    window.scrollTo(0, start + distance * eased);
+    if (progress < 1) scrollAnimationFrame = requestAnimationFrame(animate);
+  }
+
+  scrollAnimationFrame = requestAnimationFrame(animate);
+}
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (link.classList.contains("skip-link")) return;
+    const hash = link.getAttribute("href");
+    const target = hash && hash !== "#" ? document.querySelector(hash) : null;
+    if (!target) return;
+
+    event.preventDefault();
+    closeMenu();
+    smoothScrollTo(target);
+    try {
+      history.pushState(null, "", hash);
+    } catch {
+      // Direct file previews may restrict history updates; scrolling still works.
+    }
+  });
+});
+
 const header = document.querySelector(".site-header");
-window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 24), { passive: true });
+let headerUpdatePending = false;
+let headerIsCompact = false;
+
+window.addEventListener("scroll", () => {
+  if (headerUpdatePending) return;
+  headerUpdatePending = true;
+  requestAnimationFrame(() => {
+    const shouldCompact = window.scrollY > 24;
+    if (shouldCompact !== headerIsCompact) {
+      headerIsCompact = shouldCompact;
+      header.classList.toggle("is-scrolled", shouldCompact);
+    }
+    headerUpdatePending = false;
+  });
+}, { passive: true });
 
 const revealElements = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {

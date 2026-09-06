@@ -25,7 +25,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   overflow-x: hidden;
 }
 
@@ -88,7 +88,6 @@ img {
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  filter: blur(80px);
   opacity: 0.35;
   pointer-events: none;
 }
@@ -96,13 +95,13 @@ img {
 .page-glow--one {
   left: -180px;
   top: 35%;
-  background: #fac6d6;
+  background: radial-gradient(circle, #fac6d6 0%, rgba(250, 198, 214, 0.55) 36%, transparent 72%);
 }
 
 .page-glow--two {
   right: -170px;
   bottom: 8%;
-  background: #ffd9c5;
+  background: radial-gradient(circle, #ffd9c5 0%, rgba(255, 217, 197, 0.5) 36%, transparent 72%);
 }
 
 .section-shell {
@@ -115,11 +114,11 @@ img {
   z-index: 100;
   top: 0;
   padding: 16px 0;
-  transition: padding 0.25s ease;
 }
 
-.site-header.is-scrolled {
-  padding: 8px 0;
+.site-header.is-scrolled .nav-wrap {
+  background: rgba(255, 250, 252, 0.9);
+  box-shadow: 0 10px 32px rgba(110, 62, 81, 0.12);
 }
 
 .nav-wrap {
@@ -134,8 +133,8 @@ img {
   border-radius: 24px;
   background: rgba(255, 250, 252, 0.7);
   box-shadow: 0 12px 40px rgba(110, 62, 81, 0.08);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .brand {
@@ -730,8 +729,7 @@ img {
   border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 50%;
   color: var(--rose-700, #a35e76);
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
   cursor: pointer;
   font-size: 21px;
   line-height: 1;
@@ -758,8 +756,7 @@ img {
   border: 0;
   border-radius: 13px;
   color: var(--rose-950);
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.93);
   cursor: pointer;
   font-size: 13px;
   font-weight: 700;
@@ -1331,6 +1328,7 @@ img {
 @media (max-width: 780px) {
   :root { --shell: min(100% - 32px, 640px); }
 
+  .page-glow { display: none; }
   .site-header { padding: 10px 0; }
   .nav-wrap { min-height: 62px; }
   .menu-toggle { display: block; }
