@@ -5,7 +5,6 @@ const products = [
     categoryName: "贴纸 STICKERS",
     name: "花园散步贴纸包",
     subtitle: "把春日花园贴进每一页",
-    price: "¥ 18",
     image: "assets/products/garden-stickers.svg",
     description: "收录花朵、蝴蝶结、小邮票与温柔短句，半透明材质叠贴也轻盈，适合装点周计划、手账边角和日常照片。",
     size: "20 枚 / 包",
@@ -17,7 +16,6 @@ const products = [
     categoryName: "贴纸 STICKERS",
     name: "泡泡日记贴纸卷",
     subtitle: "圆滚滚的小情绪收藏家",
-    price: "¥ 16",
     image: "assets/products/bubble-stickers.svg",
     description: "一卷装进晴天、心动、发呆和灵光乍现。沿轮廓轻松撕取，让每一种微小情绪都有可爱的落脚处。",
     size: "40 mm × 2 m",
@@ -29,7 +27,6 @@ const products = [
     categoryName: "便签 NOTES",
     name: "云朵碎碎念便签",
     subtitle: "今天想说的话，云知道",
-    price: "¥ 12",
     image: "assets/products/cloud-notes.svg",
     description: "柔软云朵异形设计，留白刚好装下一句提醒、一份愿望或突然冒出的灵感。可反复揭贴，不轻易留下胶痕。",
     size: "50 张 / 本",
@@ -41,7 +38,6 @@ const products = [
     categoryName: "便签 NOTES",
     name: "花瓣清单便签本",
     subtitle: "慢慢完成，也是一种浪漫",
-    price: "¥ 15",
     image: "assets/products/petal-notes.svg",
     description: "把待办事项分成轻巧的小格子，再用一朵花标记完成。顺滑纸面适配中性笔、钢笔与彩色铅笔。",
     size: "60 张 / 本",
@@ -53,7 +49,6 @@ const products = [
     categoryName: "卡片 CARDS",
     name: "写给春天明信片",
     subtitle: "寄一封不会迟到的花信",
-    price: "¥ 20",
     image: "assets/products/letter-card.svg",
     description: "四款原创花信主题插画，正面留住春日颜色，背面写下想说的话。适合邮寄，也适合夹进手账做章节页。",
     size: "4 款 / 套",
@@ -65,7 +60,6 @@ const products = [
     categoryName: "卡片 CARDS",
     name: "闪光时刻记录卡",
     subtitle: "给值得记住的小事颁一枚奖",
-    price: "¥ 22",
     image: "assets/products/memory-card.svg",
     description: "从日期、天气到此刻心情，循着小小提示记录今天最闪亮的瞬间。金色细节在光线下会悄悄发亮。",
     size: "12 张 / 盒",
@@ -77,7 +71,6 @@ const products = [
     categoryName: "胶带 TAPES",
     name: "樱花来信和纸胶带",
     subtitle: "沿着纸页，开一条花路",
-    price: "¥ 19",
     image: "assets/products/sakura-tape.svg",
     description: "粉白花瓣与细线手写字交替延伸，单独使用轻柔，叠贴更有层次。自带离型纸，剪裁拼贴更方便。",
     size: "45 mm × 3 m",
@@ -89,11 +82,94 @@ const products = [
     categoryName: "胶带 TAPES",
     name: "晚风星光PET胶带",
     subtitle: "把今晚的星星留一点给明天",
-    price: "¥ 24",
     image: "assets/products/starlight-tape.svg",
     description: "透明底材承载粉蓝渐变、细碎星光与银色线条，适合装饰深色纸张、照片边缘，也能裁成独立小贴纸。",
     size: "50 mm × 3 m",
     material: "透明 PET＋银墨"
+  },
+  {
+    id: "rose-music-strip-roll",
+    category: "tapes",
+    categoryName: "胶带 TAPES",
+    name: "玫瑰音符点缀小拉条贴纸卷",
+    subtitle: "玫瑰与音符沿纸页轻轻延伸",
+    image: "assets/products/real/玫瑰音符点缀小拉条贴纸卷.webp",
+    description: "纤细的小拉条设计集合玫瑰、音符、蝴蝶结与蕾丝边饰，适合装点手账分隔线、照片边缘和页眉。",
+    size: "宽 5cm｜35cm 一循环｜总长 525cm｜15 个整循环",
+    material: "PET 哑膜",
+    isPhoto: true
+  },
+  {
+    id: "vintage-rose-ironwork-roll",
+    category: "tapes",
+    categoryName: "胶带 TAPES",
+    name: "古早蔷薇藤蔓铁艺贴纸卷",
+    subtitle: "像走进一座柔软的复古花园",
+    image: "assets/products/real/古早蔷薇藤蔓铁艺贴纸卷.webp",
+    description: "以蔷薇、藤蔓和铁艺窗花为主题，粉、蓝、奶油黄交织出古早浪漫气息，适合复古拼贴与主题手账。",
+    size: "宽 5cm｜50cm 一循环｜总长 500cm｜10 个整循环",
+    material: "PET 哑膜",
+    isPhoto: true
+  },
+  {
+    id: "little-animal-rose-roll",
+    category: "tapes",
+    categoryName: "胶带 TAPES",
+    name: "小动物玫瑰贴纸卷",
+    subtitle: "把甜点、玫瑰和小动物一起收藏",
+    image: "assets/products/real/小动物玫瑰贴纸卷.webp",
+    description: "软萌小动物藏进玫瑰与甜点之间，闪砂表面会在光线下呈现细碎光泽，为可爱风手账增加丰富层次。",
+    size: "宽 5cm｜35cm 一循环｜总长 525cm｜15 个整循环",
+    material: "PET 哑膜闪砂",
+    isPhoto: true
+  },
+  {
+    id: "rose-m5-inserts",
+    category: "inserts",
+    categoryName: "手账内页 INSERTS",
+    name: "玫瑰异形 M5 内页",
+    subtitle: "正反两面，都藏着不同的玫瑰心事",
+    image: "assets/products/real/玫瑰异形M5内页.webp",
+    description: "适配 M5 活页手账的玫瑰主题异形内页，正反面采用不同图案并已预先打孔，可直接装入手账使用。",
+    size: "67 × 105mm｜两款各 10 张｜正反面不同图｜已打孔",
+    material: "印刷纸品",
+    isPhoto: true
+  },
+  {
+    id: "rose-material-book",
+    category: "materials",
+    categoryName: "素材纸 MATERIALS",
+    name: "玫瑰素材本",
+    subtitle: "十二种玫瑰边框，留给十二段小故事",
+    image: "assets/products/real/玫瑰素材本.webp",
+    description: "集合花框、蕾丝、草莓与爱心等十二款玫瑰主题素材，小巧尺寸适合直接拼贴，也可用于标题和留言装饰。",
+    size: "4 × 6cm｜12 图｜每图 10 张",
+    material: "纸质拼贴素材",
+    isPhoto: true
+  },
+  {
+    id: "little-animal-collage-notes",
+    category: "notes",
+    categoryName: "便签 NOTES",
+    name: "小动物拼贴素材便签",
+    subtitle: "一整页都是软乎乎的可爱灵感",
+    image: "assets/products/real/小动物拼贴素材便签.webp",
+    description: "以小动物、甜点和蝴蝶结组成多格拼贴，既可以整页收藏，也可以沿图案剪下作为手账局部装饰。",
+    size: "10 × 14cm｜整本单款 50 张｜分装单款 10 张",
+    material: "纸质素材便签",
+    isPhoto: true
+  },
+  {
+    id: "rose-material-notebook",
+    category: "notes",
+    categoryName: "便签 NOTES",
+    name: "玫瑰素材便签本",
+    subtitle: "粉蓝与可可色写成一页复古圆舞曲",
+    image: "assets/products/real/玫瑰素材便签本.webp",
+    description: "玫瑰、音符、蝴蝶与蕾丝边框组成丰富版面，可整页使用，也能自由裁切搭配，适合打造层次感拼贴。",
+    size: "10 × 14cm｜整本单色 50 张｜分装单款双色 20 张",
+    material: "纸质素材便签",
+    isPhoto: true
   }
 ];
 
@@ -138,9 +214,9 @@ function getVisibleProducts() {
 function productCard(product, index) {
   const isFavorite = favorites.has(product.id);
   return `
-    <article class="product-card" style="animation-delay:${index * 55}ms">
+    <article class="product-card ${product.isPhoto ? "product-card--photo" : ""}" style="animation-delay:${index * 55}ms">
       <div class="product-visual" data-open-product="${product.id}">
-        <img src="${product.image}" alt="${product.name}粉色系商品插画" loading="lazy" width="480" height="560">
+        <img src="${product.image}" alt="${product.name}${product.isPhoto ? "商品实拍" : "粉色系商品插画"}" loading="lazy" decoding="async" width="480" height="560">
         <button class="favorite-button ${isFavorite ? "is-favorite" : ""}" type="button" data-favorite="${product.id}" aria-pressed="${isFavorite}" aria-label="${isFavorite ? "取消收藏" : "收藏"}${product.name}">${isFavorite ? "♥" : "♡"}</button>
         <button class="quick-view" type="button" data-open-product="${product.id}">查看小物详情</button>
       </div>
@@ -148,7 +224,6 @@ function productCard(product, index) {
         <p class="product-category">${product.categoryName}</p>
         <div class="product-title-row">
           <h3>${product.name}</h3>
-          <span class="product-price">${product.price}</span>
         </div>
         <p class="product-subtitle">${product.subtitle}</p>
       </div>
@@ -192,14 +267,14 @@ function openProduct(id) {
 
   activeProductId = id;
   modal.querySelector("[data-modal-image]").src = product.image;
-  modal.querySelector("[data-modal-image]").alt = `${product.name}粉色系商品插画`;
+  modal.querySelector("[data-modal-image]").alt = `${product.name}${product.isPhoto ? "商品实拍" : "粉色系商品插画"}`;
+  modal.querySelector(".modal-image-wrap").classList.toggle("is-photo", Boolean(product.isPhoto));
   modal.querySelector("[data-modal-category]").textContent = product.categoryName;
   modal.querySelector("[data-modal-title]").textContent = product.name;
   modal.querySelector("[data-modal-subtitle]").textContent = product.subtitle;
   modal.querySelector("[data-modal-description]").textContent = product.description;
   modal.querySelector("[data-modal-size]").textContent = product.size;
   modal.querySelector("[data-modal-material]").textContent = product.material;
-  modal.querySelector("[data-modal-price]").textContent = product.price;
   updateModalFavorite();
   modal.showModal();
   document.body.classList.add("modal-open");
