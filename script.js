@@ -1,11 +1,14 @@
 const welcomeScene = document.querySelector("[data-welcome-scene]");
 const welcomeSkip = document.querySelector("[data-welcome-skip]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const welcomeStorageKey = document.body.classList.contains("scheme-two")
+  ? "boiling-bubbles-welcome-scheme-two"
+  : "boiling-bubbles-welcome-scheme-one";
 let welcomeTimer;
 
 function hasSeenWelcome() {
   try {
-    return sessionStorage.getItem("boiling-bubbles-welcome") === "seen";
+    return sessionStorage.getItem(welcomeStorageKey) === "seen";
   } catch {
     return false;
   }
@@ -13,7 +16,7 @@ function hasSeenWelcome() {
 
 function rememberWelcome() {
   try {
-    sessionStorage.setItem("boiling-bubbles-welcome", "seen");
+    sessionStorage.setItem(welcomeStorageKey, "seen");
   } catch {
     // The introduction can still close when storage is unavailable.
   }
