@@ -48,6 +48,103 @@ if (welcomeScene) {
   }
 }
 
+const backgroundBubbles = [...document.querySelectorAll(".page-bubbles i")];
+
+if (backgroundBubbles.length && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+  const bubblePhysics = backgroundBubbles.map(() => ({
+    x: 0,
+    y: 0,
+    velocityX: 0,
+    velocityY: 0
+  }));
+  let physicsFrame = 0;
+  let previousPhysicsTime = performance.now();
+  let pointerUpdatePending = false;
+  let latestPointerEvent = null;
+
+  function animateBubblePhysics(now) {
+    const step = Math.min((now - previousPhysicsTime) / 16.67, 2);
+    previousPhysicsTime = now;
+    let stillMoving = false;
+    const edgePadding = 10;
+    const boundsList = backgroundBubbles.map((bubble) => bubble.getBoundingClientRect());
+
+    bubblePhysics.forEach((state, index) => {
+      const bounds = boundsList[index];
+      if (!bounds.width) return;
+
+      state.velocityX += -state.x * 0.00045 * step;
+      state.velocityY += -state.y * 0.00035 * step;
+      state.x += state.velocityX * step;
+      state.y += state.velocityY * step;
+
+      const nextLeft = bounds.left + state.velocityX * step;
+      const nextRight = bounds.right + state.velocityX * step;
+      if (nextLeft < edgePadding && state.velocityX < 0) {
+        state.x += edgePadding - nextLeft;
+        state.velocityX = Math.abs(state.velocityX) * 0.76;
+      } else if (nextRight > window.innerWidth - edgePadding && state.velocityX > 0) {
+        state.x -= nextRight - (window.innerWidth - edgePadding);
+        state.velocityX = -Math.abs(state.velocityX) * 0.76;
+      }
+
+      state.velocityX *= Math.pow(0.986, step);
+      state.velocityY *= Math.pow(0.98, step);
+      if (Math.abs(state.x) < 0.02) state.x = 0;
+      if (Math.abs(state.y) < 0.02) state.y = 0;
+
+      backgroundBubbles[index].style.setProperty("--parallax-x", `${state.x}px`);
+      backgroundBubbles[index].style.setProperty("--parallax-y", `${state.y}px`);
+
+      if (Math.abs(state.velocityX) > 0.02 || Math.abs(state.velocityY) > 0.02 || Math.abs(state.x) > 0.2 || Math.abs(state.y) > 0.2) {
+        stillMoving = true;
+      }
+    });
+
+    physicsFrame = stillMoving ? requestAnimationFrame(animateBubblePhysics) : 0;
+  }
+
+  function startBubblePhysics() {
+    if (physicsFrame) return;
+    previousPhysicsTime = performance.now();
+    physicsFrame = requestAnimationFrame(animateBubblePhysics);
+  }
+
+  function applyPointerPush() {
+    const event = latestPointerEvent;
+    const boundsList = backgroundBubbles.map((bubble) => bubble.getBoundingClientRect());
+
+    bubblePhysics.forEach((state, index) => {
+      const bounds = boundsList[index];
+      if (!bounds.width) return;
+      const offsetX = bounds.left + bounds.width / 2 - event.clientX;
+      const offsetY = bounds.top + bounds.height / 2 - event.clientY;
+      const distance = Math.hypot(offsetX, offsetY);
+      const radius = 130 + bounds.width * 0.35;
+      if (distance >= radius) return;
+
+      const force = Math.pow(1 - distance / radius, 1.2) * (1.8 + bounds.width * 0.018);
+      const safeDistance = Math.max(distance, 1);
+      const directionX = distance > 1 ? offsetX / safeDistance : 1;
+      const directionY = distance > 1 ? offsetY / safeDistance : -0.35;
+      state.velocityX += directionX * force + (event.movementX || 0) * 0.045;
+      state.velocityY += directionY * force + (event.movementY || 0) * 0.025;
+      state.velocityX = Math.max(-8, Math.min(8, state.velocityX));
+      state.velocityY = Math.max(-6, Math.min(6, state.velocityY));
+    });
+
+    pointerUpdatePending = false;
+    startBubblePhysics();
+  }
+
+  window.addEventListener("pointermove", (event) => {
+    latestPointerEvent = event;
+    if (pointerUpdatePending) return;
+    pointerUpdatePending = true;
+    requestAnimationFrame(applyPointerPush);
+  }, { passive: true });
+}
+
 const products = [
   {
     id: "garden-stickers",
