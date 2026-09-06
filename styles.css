@@ -308,6 +308,40 @@ main,
   letter-spacing: 0.18em;
 }
 
+.style-switch {
+  margin-left: auto;
+  margin-right: 14px;
+  padding: 9px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(190, 111, 139, 0.2);
+  border-radius: 999px;
+  color: var(--rose-800);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(250, 222, 232, 0.82));
+  box-shadow: 0 6px 18px rgba(145, 78, 102, 0.08);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.style-switch > span:first-child {
+  color: var(--rose-500);
+  font-size: 14px;
+}
+
+.style-switch:hover {
+  background: linear-gradient(135deg, #fff, var(--rose-100));
+  box-shadow: 0 8px 22px rgba(145, 78, 102, 0.14);
+  transform: translateY(-1px);
+}
+
+.style-switch:focus-visible {
+  outline: 2px solid var(--rose-500);
+  outline-offset: 3px;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -1955,6 +1989,7 @@ main,
   .page-bubbles i:nth-child(9) { width: 48px; height: 48px; }
   .site-header { padding: 10px 0; }
   .nav-wrap { min-height: 62px; }
+  .style-switch { margin-right: 8px; padding: 8px 11px; }
   .menu-toggle { display: block; }
   .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.75px) rotate(45deg); }
   .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.75px) rotate(-45deg); }
@@ -2009,6 +2044,8 @@ main,
 @media (max-width: 560px) {
   .brand strong { font-size: 15px; }
   .brand-mark { width: 39px; height: 39px; }
+  .brand small { display: none; }
+  .style-switch { margin-left: auto; margin-right: 6px; padding: 8px 10px; font-size: 11px; }
   .hero { padding: 34px 0 74px; gap: 30px; }
   .hero h1 { font-size: clamp(34px, 10.4vw, 42px); }
   .hero-description { font-size: 14px; }
