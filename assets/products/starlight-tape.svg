@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560">
+  <defs><linearGradient id="bg" x1="0" x2="1" y2="1"><stop stop-color="#c9cce6"/><stop offset=".52" stop-color="#e9bfd4"/><stop offset="1" stop-color="#f5d1ca"/></linearGradient><linearGradient id="t" x1="0" x2="1"><stop stop-color="#858fbf"/><stop offset=".5" stop-color="#cc86a9"/><stop offset="1" stop-color="#edb6bd"/></linearGradient><filter id="s"><feDropShadow dy="18" stdDeviation="15" flood-color="#655473" flood-opacity=".25"/></filter></defs>
+  <rect width="480" height="560" rx="28" fill="url(#bg)"/>
+  <g fill="#fff" opacity=".6"><circle cx="72" cy="80" r="4"/><circle cx="127" cy="127" r="2"/><circle cx="390" cy="73" r="3"/><circle cx="416" cy="169" r="5"/><path d="M61 222h20M71 212v20M396 393h26M409 380v26" stroke="#fff" stroke-width="2"/></g>
+  <g filter="url(#s)">
+    <ellipse cx="240" cy="363" rx="151" ry="69" fill="#7778a0"/>
+    <ellipse cx="240" cy="349" rx="151" ry="69" fill="#eef0fa"/>
+    <ellipse cx="240" cy="348" rx="91" ry="40" fill="url(#t)"/>
+    <ellipse cx="240" cy="346" rx="53" ry="23" fill="#f8edf2"/>
+    <path d="M106 332c6-85 15-162 28-231 69-30 139-30 212 0 13 81 20 157 28 231-76 43-181 45-268 0Z" fill="url(#t)" opacity=".93"/>
+    <path d="M134 108c69 31 140 31 212 0" fill="none" stroke="#fff" stroke-width="4" opacity=".65"/>
+    <g fill="#fff"><path d="M177 178l5 12 13 2-10 9 3 13-11-7-12 7 3-13-10-9 14-2Z"/><path d="M300 245l4 9 10 2-8 7 2 10-8-5-9 5 3-10-8-7 10-2Z"/><circle cx="262" cy="174" r="4"/><circle cx="198" cy="274" r="3"/></g>
+    <path d="M145 252c54-57 112-73 176-49" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="2 7"/>
+    <text x="244" y="299" text-anchor="middle" fill="#fff" font-family="Georgia" font-size="13" font-style="italic" letter-spacing="1">save some stars for tomorrow</text>
+  </g>
+  <text x="31" y="528" fill="#68546c" font-family="Georgia" font-size="11" letter-spacing="3">BOILING BUBBLES 08</text>
+</svg>

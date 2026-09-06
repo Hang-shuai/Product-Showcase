@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560">
+  <defs><linearGradient id="bg" x1="0" x2="1" y2="1"><stop stop-color="#f7dfca"/><stop offset="1" stop-color="#edbbc9"/></linearGradient><filter id="s"><feDropShadow dy="14" stdDeviation="12" flood-color="#9d6070" flood-opacity=".2"/></filter></defs>
+  <rect width="480" height="560" rx="28" fill="url(#bg)"/>
+  <path d="M0 110C104 48 135 129 245 73s166-9 235-48v-25H0Z" fill="#fff" opacity=".22"/>
+  <g filter="url(#s)" transform="rotate(3 240 280)">
+    <rect x="104" y="77" width="276" height="398" rx="18" fill="#fffaf1"/>
+    <rect x="104" y="77" width="276" height="68" rx="18" fill="#d98aa2"/><path d="M104 127h276v18H104Z" fill="#d98aa2"/>
+    <text x="242" y="118" text-anchor="middle" fill="#fff" font-family="Georgia" font-size="14" letter-spacing="4">TODAY, SOFTLY</text>
+    <g fill="none" stroke="#e5c7cd"><path d="M142 202h192"/><path d="M142 255h192"/><path d="M142 308h192"/><path d="M142 361h192"/><path d="M142 414h192"/></g>
+    <g fill="#f3b5c6" stroke="#d8879f" stroke-width="1"><circle cx="151" cy="183" r="10"/><circle cx="151" cy="236" r="10"/><circle cx="151" cy="289" r="10"/><circle cx="151" cy="342" r="10"/><circle cx="151" cy="395" r="10"/></g>
+    <g transform="translate(320 426)"><circle r="24" fill="#e3a0b4"/><circle cx="-18" cy="-5" r="15" fill="#efb6c5"/><circle cx="15" cy="-12" r="16" fill="#d7869e"/><circle cx="7" cy="18" r="15" fill="#f5c4d0"/><circle r="7" fill="#f2cb72"/></g>
+  </g>
+  <text x="31" y="528" fill="#8a5967" font-family="Georgia" font-size="11" letter-spacing="3">BOILING BUBBLES 04</text>
+</svg>

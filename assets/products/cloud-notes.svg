@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560">
+  <defs><linearGradient id="bg" y1="0" y2="1"><stop stop-color="#cfe1ea"/><stop offset="1" stop-color="#efd3df"/></linearGradient><filter id="s"><feDropShadow dy="16" stdDeviation="14" flood-color="#6c647b" flood-opacity=".18"/></filter></defs>
+  <rect width="480" height="560" rx="28" fill="url(#bg)"/>
+  <g fill="#fff" opacity=".22"><circle cx="52" cy="53" r="90"/><circle cx="440" cy="500" r="130"/></g>
+  <g filter="url(#s)">
+    <path d="M99 360c-39-47-7-111 51-104 3-58 70-88 115-52 47-31 111 5 106 65 56 11 63 88 12 111-78 34-223 27-284-20Z" fill="#fffdf9"/>
+    <path d="M108 342c-26-38 7-79 49-70 10-42 59-62 95-32 39-28 93 0 96 47 35 2 51 38 32 68" fill="none" stroke="#f1bdcc" stroke-width="2" stroke-dasharray="4 7"/>
+  </g>
+  <text x="240" y="282" text-anchor="middle" fill="#b66b83" font-family="serif" font-size="23">云朵碎碎念</text>
+  <g stroke="#e8c8d2" stroke-width="2"><path d="M168 311h144"/><path d="M154 338h172"/></g>
+  <g transform="translate(305 198) rotate(8)"><rect x="-47" y="-54" width="94" height="108" rx="7" fill="#f9d0db" stroke="#fff" stroke-width="5"/><text y="-12" text-anchor="middle" fill="#a96178" font-size="24">☁</text><text y="17" text-anchor="middle" fill="#a96178" font-family="Georgia" font-size="9">take it slow</text></g>
+  <g transform="translate(112 172)"><path d="M0 22C-38-5-32-43-5-27L0-15 5-27c27-16 33 22-5 49Z" fill="#efa9bd"/><circle cx="-17" cy="-9" r="5" fill="#fff" opacity=".45"/></g>
+  <text x="31" y="528" fill="#74596a" font-family="Georgia" font-size="11" letter-spacing="3">BOILING BUBBLES 03</text>
+</svg>
+

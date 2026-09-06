@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 560">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e3d8ee"/><stop offset="1" stop-color="#f4bed0"/></linearGradient><filter id="s"><feDropShadow dy="15" stdDeviation="13" flood-color="#76526e" flood-opacity=".2"/></filter></defs>
+  <rect width="480" height="560" rx="28" fill="url(#bg)"/>
+  <g opacity=".3" fill="none" stroke="#fff" stroke-width="2"><circle cx="52" cy="90" r="32"/><circle cx="418" cy="120" r="60"/><circle cx="400" cy="486" r="92"/></g>
+  <g filter="url(#s)"><ellipse cx="241" cy="390" rx="139" ry="58" fill="#ba728c"/><ellipse cx="241" cy="381" rx="139" ry="58" fill="#f9f0f4"/><ellipse cx="241" cy="380" rx="81" ry="32" fill="#d8aec4"/><ellipse cx="241" cy="378" rx="53" ry="20" fill="#fff8fa"/></g>
+  <path d="M120 370c13-81 22-176 35-244 57-30 118-31 177 0 13 77 23 164 31 244-72 42-162 43-243 0Z" fill="#fff8fa" filter="url(#s)"/>
+  <path d="M155 126c57 27 118 27 177 0" fill="none" stroke="#e5a5bb" stroke-width="5"/>
+  <g transform="translate(0 3)">
+    <circle cx="199" cy="205" r="44" fill="#f1acc1"/><circle cx="190" cy="193" r="11" fill="#fff" opacity=".55"/><text x="199" y="214" text-anchor="middle" fill="#fff" font-family="serif" font-size="18">晴</text>
+    <circle cx="283" cy="267" r="51" fill="#9bc5c8"/><circle cx="270" cy="251" r="13" fill="#fff" opacity=".5"/><text x="283" y="276" text-anchor="middle" fill="#fff" font-family="serif" font-size="18">想</text>
+    <circle cx="191" cy="317" r="38" fill="#f2c66d"/><text x="191" y="326" text-anchor="middle" fill="#fff" font-size="22">✦</text>
+  </g>
+  <path d="M156 153c58 25 117 25 175 0" fill="none" stroke="#d98ba3" stroke-dasharray="3 8"/>
+  <text x="240" y="103" text-anchor="middle" fill="#84536a" font-family="Georgia" font-size="12" letter-spacing="3">BUBBLE DIARY</text>
+  <text x="32" y="528" fill="#79556e" font-family="Georgia" font-size="11" letter-spacing="3">BOILING BUBBLES 02</text>
+</svg>
+

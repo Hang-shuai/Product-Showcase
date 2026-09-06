@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs><linearGradient id="g" x1="8" y1="6" x2="56" y2="60"><stop stop-color="#f3b8ca"/><stop offset="1" stop-color="#ba6481"/></linearGradient></defs>
+  <circle cx="32" cy="32" r="29" fill="url(#g)"/>
+  <circle cx="22" cy="20" r="7" fill="#fff" opacity=".35"/>
+  <text x="32" y="41" text-anchor="middle" fill="#fff" font-family="serif" font-size="27" font-weight="700">泡</text>
+</svg>
+
