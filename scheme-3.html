@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="开水泡泡泡泡蔷薇洛丽塔剧场，用华丽蕾丝与童话动物展示贴纸、便签、卡片和胶带。">
-  <meta name="theme-color" content="#d98eaa">
-  <title>开水泡泡｜泡泡蔷薇洛丽塔剧场</title>
+  <meta name="description" content="开水泡泡午夜玫瑰珍藏剧场，以深莓红、香槟金与玻璃光影展示贴纸、便签、卡片和胶带。">
+  <meta name="theme-color" content="#351923">
+  <title>开水泡泡｜午夜玫瑰珍藏剧场</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="scheme-3.css">
   <script src="audio.js" defer></script>
   <script src="script.js" defer></script>
 </head>
-<body class="scheme-two">
+<body class="scheme-two scheme-three">
   <a class="skip-link" href="#main">跳到主要内容</a>
+  <div class="rose-vine-border rose-vine-border--left" aria-hidden="true"></div>
+  <div class="rose-vine-border rose-vine-border--right" aria-hidden="true"></div>
   <div class="welcome-scene" data-welcome-scene>
     <button class="welcome-skip" type="button" data-welcome-skip>跳过动画</button>
     <div class="welcome-curtain welcome-curtain--left" aria-hidden="true"></div>
@@ -56,9 +59,9 @@
       </a>
 
       <nav class="style-switcher" aria-label="切换页面风格">
-        <a class="style-choice is-active" href="scheme-2.html" aria-current="page">泡泡蔷薇</a>
+        <a class="style-choice" href="scheme-2.html">泡泡蔷薇</a>
         <a class="style-choice" href="scheme-1.html">奶油雾光</a>
-        <a class="style-choice" href="scheme-3.html">午夜玫瑰</a>
+        <a class="style-choice is-active" href="scheme-3.html" aria-current="page">午夜玫瑰</a>
       </nav>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="打开导航菜单">
@@ -238,23 +241,6 @@
       <p class="copyright">© <span data-year></span> 开水泡泡</p>
     </div>
   </footer>
-
-  <dialog class="rose-notice" data-first-visit-notice aria-labelledby="rose-notice-title" aria-describedby="rose-notice-copy">
-    <div class="rose-notice-card">
-      <p class="rose-notice-kicker"><span>✦</span> ROSE THEATRE NOTICE <span>✦</span></p>
-      <h2 id="rose-notice-title">泡泡小报送达啦</h2>
-      <p class="rose-notice-copy" id="rose-notice-copy">欢迎来到开水泡泡。这里会不定期更新新品上架、补货和小小活动，今天先慢慢逛逛，把心动的小物收藏起来吧。</p>
-      <ul class="rose-notice-list" aria-label="近期提示">
-        <li><span>♡</span> 新品故事正在整理中</li>
-        <li><span>♡</span> 收藏夹已经可以使用</li>
-        <li><span>♡</span> 更多联系入口即将开放</li>
-      </ul>
-      <div class="rose-notice-actions">
-        <button class="rose-notice-ack" type="button" data-notice-close data-notice-sound="on">让音乐陪我逛逛 <span aria-hidden="true">♡</span></button>
-        <button class="rose-notice-quiet" type="button" data-notice-close data-notice-sound="off">先安静地看看</button>
-      </div>
-    </div>
-  </dialog>
 
   <dialog class="product-modal" data-product-modal aria-labelledby="modal-title">
     <button class="modal-close" type="button" data-modal-close aria-label="关闭商品详情">×</button>

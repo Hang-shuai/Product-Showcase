@@ -1,10 +1,55 @@
 const welcomeScene = document.querySelector("[data-welcome-scene]");
 const welcomeSkip = document.querySelector("[data-welcome-skip]");
+const firstVisitNotice = document.querySelector("[data-first-visit-notice]");
+const noticeCloseButtons = [...document.querySelectorAll("[data-notice-close]")];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const welcomeStorageKey = document.body.classList.contains("scheme-two")
-  ? "boiling-bubbles-welcome-scheme-two"
-  : "boiling-bubbles-welcome-scheme-one";
+const noticeStorageKey = "boiling-bubbles-rose-notice-v3";
+const welcomeStorageKey = document.body.classList.contains("scheme-three")
+  ? "boiling-bubbles-welcome-scheme-three"
+  : document.body.classList.contains("scheme-two")
+    ? "boiling-bubbles-welcome-scheme-two-v2"
+    : "boiling-bubbles-welcome-scheme-one";
 let welcomeTimer;
+let noticeDismissedForPage = false;
+
+function hasDismissedNotice() {
+  if (noticeDismissedForPage) return true;
+  try {
+    return localStorage.getItem(noticeStorageKey) === "dismissed";
+  } catch {
+    return false;
+  }
+}
+
+function showFirstVisitNotice() {
+  if (!firstVisitNotice || hasDismissedNotice() || firstVisitNotice.open) return;
+  firstVisitNotice.showModal();
+  document.body.classList.add("modal-open");
+}
+
+function dismissFirstVisitNotice() {
+  if (!firstVisitNotice) return;
+  noticeDismissedForPage = true;
+  try {
+    localStorage.setItem(noticeStorageKey, "dismissed");
+  } catch {
+    // Keep the dismissal for the current page when storage is unavailable.
+  }
+  firstVisitNotice.close();
+  document.body.classList.remove("modal-open");
+}
+
+if (firstVisitNotice) {
+  noticeCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.dataset.noticeSound === "on") window.BoilingBubblesAudio?.enable();
+      if (button.dataset.noticeSound === "off") window.BoilingBubblesAudio?.disable();
+      dismissFirstVisitNotice();
+    });
+  });
+  firstVisitNotice.addEventListener("cancel", (event) => event.preventDefault());
+  firstVisitNotice.addEventListener("close", () => document.body.classList.remove("modal-open"));
+}
 
 function hasSeenWelcome() {
   try {
@@ -30,11 +75,15 @@ function finishWelcome(immediate = false) {
 
   if (immediate) {
     welcomeScene.hidden = true;
+    showFirstVisitNotice();
     return;
   }
 
   welcomeScene.classList.add("is-leaving");
-  setTimeout(() => { welcomeScene.hidden = true; }, 430);
+  setTimeout(() => {
+    welcomeScene.hidden = true;
+    showFirstVisitNotice();
+  }, 430);
 }
 
 if (welcomeScene) {
@@ -49,6 +98,8 @@ if (welcomeScene) {
       if (event.key === "Escape") finishWelcome();
     }, { once: true });
   }
+} else {
+  showFirstVisitNotice();
 }
 
 const backgroundBubbles = [...document.querySelectorAll(".page-bubbles i")];
