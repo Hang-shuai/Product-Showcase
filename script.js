@@ -377,6 +377,7 @@ const products = [
 const grid = document.querySelector("[data-product-grid]");
 const resultCount = document.querySelector("[data-result-count]");
 const emptyState = document.querySelector("[data-empty-state]");
+const collectionsSection = document.querySelector("#collections");
 const favoriteCounters = document.querySelectorAll("[data-favorite-count]");
 const modal = document.querySelector("[data-product-modal]");
 const toast = document.querySelector("[data-toast]");
@@ -527,9 +528,18 @@ modal.querySelector("[data-modal-favorite]").addEventListener("click", () => tog
 
 document.querySelectorAll("[data-show-favorites]").forEach((button) => {
   button.addEventListener("click", () => {
-    selectFilter("favorites");
-    smoothScrollTo(document.querySelector("#collections"));
     closeMenu();
+    if (favorites.size === 0) {
+      selectFilter("all");
+      smoothScrollTo(collectionsSection);
+      showToast("收藏夹还是空的～先逛逛小物，点亮卡片右上角的爱心就能收藏啦 ♡");
+      collectionsSection.classList.remove("is-favorite-hint");
+      requestAnimationFrame(() => collectionsSection.classList.add("is-favorite-hint"));
+      setTimeout(() => collectionsSection.classList.remove("is-favorite-hint"), 2600);
+      return;
+    }
+    selectFilter("favorites");
+    smoothScrollTo(collectionsSection);
   });
 });
 

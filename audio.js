@@ -17,8 +17,13 @@
     rose: { low: 587.33, mid: 739.99, high: 880, wave: "sine" },
     midnight: { low: 293.66, mid: 440, high: 659.25, wave: "triangle" }
   };
-  const musicVolume = 0.085;
-  const musicStartVolume = 0.025;
+  const musicVolumes = {
+    cream: 0.14,
+    rose: 0.09,
+    midnight: 0.095
+  };
+  const musicVolume = musicVolumes[theme];
+  const musicStartVolume = Math.min(musicVolume, theme === "cream" ? 0.11 : 0.072);
   const music = new Audio(tracks[theme]);
   const controls = [...document.querySelectorAll("[data-sound-toggle]")];
   let audioContext;
@@ -84,12 +89,12 @@
     fadeFrame = requestAnimationFrame(step);
   }
 
-  async function startMusic() {
+  async function startMusic(immediate = false) {
     if (!enabled || document.hidden) return false;
     try {
       if (music.volume < musicStartVolume) music.volume = musicStartVolume;
       await music.play();
-      fadeMusic(musicVolume, 620);
+      fadeMusic(musicVolume, immediate ? 90 : 180);
       return true;
     } catch {
       armGestureStart();
@@ -214,11 +219,15 @@
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) music.pause();
-    else if (enabled) startMusic();
+    else if (enabled) startMusic(true);
+  });
+
+  window.addEventListener("pageshow", () => {
+    if (enabled) startMusic(true);
   });
 
   updateControls();
-  if (enabled) startMusic();
+  if (enabled) startMusic(true);
 
   window.BoilingBubblesAudio = {
     enable: () => setEnabled(true),

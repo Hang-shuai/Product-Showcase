@@ -1028,6 +1028,15 @@ main,
   background: var(--rose-500);
 }
 
+.collections.is-favorite-hint .favorite-button {
+  animation: favorite-hint 0.72s ease-in-out 2;
+}
+
+@keyframes favorite-hint {
+  0%, 100% { transform: scale(1); }
+  45% { transform: scale(1.16); box-shadow: 0 0 0 8px rgba(221, 128, 162, .12); }
+}
+
 .quick-view {
   position: absolute;
   z-index: 2;
