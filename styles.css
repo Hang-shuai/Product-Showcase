@@ -62,6 +62,12 @@ body.is-welcoming {
   overflow: hidden;
 }
 
+/* Keep the page beneath the rose notice out of the first paint. The welcome
+   scene remains visible when it is due to play. */
+.scheme-two.notice-pending > :not(.welcome-scene):not(.rose-notice) {
+  visibility: hidden;
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -2899,10 +2905,10 @@ body.scheme-two {
   backdrop-filter: blur(8px) saturate(.9);
 }
 
-.rose-notice[open] { animation: rose-notice-in .42s cubic-bezier(.2, .8, .2, 1); }
+.rose-notice[open] { animation: rose-notice-in .3s cubic-bezier(.2, .8, .2, 1); }
 
 @keyframes rose-notice-in {
-  from { opacity: 0; transform: translateY(24px) scale(.96); }
+  from { transform: translateY(16px) scale(.975); }
 }
 
 .rose-notice-card {

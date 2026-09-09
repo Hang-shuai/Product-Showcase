@@ -16,9 +16,13 @@ function hasDismissedNotice() {
 }
 
 function showFirstVisitNotice() {
-  if (!firstVisitNotice || hasDismissedNotice() || firstVisitNotice.open) return;
+  if (!firstVisitNotice || hasDismissedNotice() || firstVisitNotice.open) {
+    document.body.classList.remove("notice-pending");
+    return;
+  }
   firstVisitNotice.showModal();
   document.body.classList.add("modal-open");
+  document.body.classList.remove("notice-pending");
 }
 
 function dismissFirstVisitNotice() {
