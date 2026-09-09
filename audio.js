@@ -187,6 +187,12 @@
       tone(notes.high, 0.1, 0.24, 0.115);
       return;
     }
+    if (kind === "collect") {
+      tone(notes.low, 0, 0.12, 0.13);
+      tone(notes.mid, 0.07, 0.18, 0.17);
+      tone(notes.high, 0.16, 0.28, 0.15);
+      return;
+    }
     tone(notes.mid, 0, 0.075, 0.11);
   }
 
@@ -209,7 +215,7 @@
   });
 
   document.addEventListener("click", (event) => {
-    if (!enabled || event.target.closest("[data-sound-toggle], [data-notice-close]")) return;
+    if (!enabled || event.target.closest("[data-sound-toggle], [data-notice-close], [data-owned-toggle]")) return;
     if (event.target.closest(".style-choice")) playEffect("switch");
     else if (event.target.closest("[data-favorite], [data-modal-favorite], [data-show-favorites]")) playEffect("heart");
     else if (event.target.closest("[data-open-product]")) playEffect("open");

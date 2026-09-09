@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="audio.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="collection.js" defer></script>
 </head>
 <body class="scheme-one">
   <a class="skip-link" href="#main">跳到主要内容</a>
@@ -70,9 +71,9 @@
         <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false" aria-label="开启页面声音">
           <span class="sound-toggle-icon" data-sound-icon aria-hidden="true">♪</span><span data-sound-label>音乐</span>
         </button>
-        <button class="favorite-nav" type="button" data-show-favorites aria-label="查看收藏商品">
-          <span aria-hidden="true">♡</span> 收藏
-          <span class="favorite-count" data-favorite-count>0</span>
+        <button class="favorite-nav collection-nav" type="button" data-open-collection aria-label="打开我的泡泡图鉴">
+          <span aria-hidden="true">◉</span> 图鉴
+          <span class="favorite-count collection-count" data-collection-count>0/7</span>
         </button>
       </nav>
     </div>
@@ -138,14 +139,13 @@
       <div class="filter-row lace-card reveal" role="toolbar" aria-label="筛选商品">
         <div class="filter-buttons" data-filters>
           <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">全部</button>
-          <button class="filter-button" type="button" data-filter="stickers" aria-pressed="false">贴纸</button>
+          <button class="filter-button" type="button" data-filter="favorites" aria-pressed="false">心愿单</button>
           <button class="filter-button" type="button" data-filter="notes" aria-pressed="false">便签</button>
-          <button class="filter-button" type="button" data-filter="cards" aria-pressed="false">卡片</button>
           <button class="filter-button" type="button" data-filter="tapes" aria-pressed="false">胶带</button>
           <button class="filter-button" type="button" data-filter="materials" aria-pressed="false">素材纸</button>
           <button class="filter-button" type="button" data-filter="inserts" aria-pressed="false">手账内页</button>
         </div>
-        <p class="result-count" aria-live="polite"><strong data-result-count>15</strong> 件小小心动</p>
+        <p class="result-count" aria-live="polite"><strong data-result-count>7</strong> 件小小心动</p>
       </div>
 
       <div class="product-grid" data-product-grid></div>
@@ -196,8 +196,8 @@
         <p>所以，我们做了一些不急着长大的手账小物。希望它们陪你慢下来，发现平凡日子里不断冒出的、透明又柔软的小泡泡。</p>
         <div class="about-signature">Boiling Bubbles <span>✿</span></div>
         <dl class="about-stats">
-          <div><dt>15</dt><dd>精选小物</dd></div>
-          <div><dt>06</dt><dd>灵感分类</dd></div>
+          <div><dt data-product-total>0</dt><dd>精选小物</dd></div>
+          <div><dt data-category-total>0</dt><dd>灵感分类</dd></div>
           <div><dt>∞</dt><dd>记录可能</dd></div>
         </dl>
       </div>

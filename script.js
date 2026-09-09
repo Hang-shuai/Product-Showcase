@@ -201,94 +201,6 @@ if (backgroundBubbles.length && !reduceMotion && window.matchMedia("(pointer: fi
 
 const products = [
   {
-    id: "garden-stickers",
-    category: "stickers",
-    categoryName: "贴纸 STICKERS",
-    name: "花园散步贴纸包",
-    subtitle: "把春日花园贴进每一页",
-    image: "assets/products/garden-stickers.svg",
-    description: "收录花朵、蝴蝶结、小邮票与温柔短句，半透明材质叠贴也轻盈，适合装点周计划、手账边角和日常照片。",
-    size: "20 枚 / 包",
-    material: "和纸不干胶"
-  },
-  {
-    id: "bubble-stickers",
-    category: "stickers",
-    categoryName: "贴纸 STICKERS",
-    name: "泡泡日记贴纸卷",
-    subtitle: "圆滚滚的小情绪收藏家",
-    image: "assets/products/bubble-stickers.svg",
-    description: "一卷装进晴天、心动、发呆和灵光乍现。沿轮廓轻松撕取，让每一种微小情绪都有可爱的落脚处。",
-    size: "40 mm × 2 m",
-    material: "哑光和纸"
-  },
-  {
-    id: "cloud-notes",
-    category: "notes",
-    categoryName: "便签 NOTES",
-    name: "云朵碎碎念便签",
-    subtitle: "今天想说的话，云知道",
-    image: "assets/products/cloud-notes.svg",
-    description: "柔软云朵异形设计，留白刚好装下一句提醒、一份愿望或突然冒出的灵感。可反复揭贴，不轻易留下胶痕。",
-    size: "50 张 / 本",
-    material: "书写纸"
-  },
-  {
-    id: "petal-notes",
-    category: "notes",
-    categoryName: "便签 NOTES",
-    name: "花瓣清单便签本",
-    subtitle: "慢慢完成，也是一种浪漫",
-    image: "assets/products/petal-notes.svg",
-    description: "把待办事项分成轻巧的小格子，再用一朵花标记完成。顺滑纸面适配中性笔、钢笔与彩色铅笔。",
-    size: "60 张 / 本",
-    material: "100g 米白纸"
-  },
-  {
-    id: "letter-card",
-    category: "cards",
-    categoryName: "卡片 CARDS",
-    name: "写给春天明信片",
-    subtitle: "寄一封不会迟到的花信",
-    image: "assets/products/letter-card.svg",
-    description: "四款原创花信主题插画，正面留住春日颜色，背面写下想说的话。适合邮寄，也适合夹进手账做章节页。",
-    size: "4 款 / 套",
-    material: "350g 棉感卡纸"
-  },
-  {
-    id: "memory-card",
-    category: "cards",
-    categoryName: "卡片 CARDS",
-    name: "闪光时刻记录卡",
-    subtitle: "给值得记住的小事颁一枚奖",
-    image: "assets/products/memory-card.svg",
-    description: "从日期、天气到此刻心情，循着小小提示记录今天最闪亮的瞬间。金色细节在光线下会悄悄发亮。",
-    size: "12 张 / 盒",
-    material: "特种纸＋烫金"
-  },
-  {
-    id: "sakura-tape",
-    category: "tapes",
-    categoryName: "胶带 TAPES",
-    name: "樱花来信和纸胶带",
-    subtitle: "沿着纸页，开一条花路",
-    image: "assets/products/sakura-tape.svg",
-    description: "粉白花瓣与细线手写字交替延伸，单独使用轻柔，叠贴更有层次。自带离型纸，剪裁拼贴更方便。",
-    size: "45 mm × 3 m",
-    material: "和纸＋离型纸"
-  },
-  {
-    id: "starlight-tape",
-    category: "tapes",
-    categoryName: "胶带 TAPES",
-    name: "晚风星光PET胶带",
-    subtitle: "把今晚的星星留一点给明天",
-    image: "assets/products/starlight-tape.svg",
-    description: "透明底材承载粉蓝渐变、细碎星光与银色线条，适合装饰深色纸张、照片边缘，也能裁成独立小贴纸。",
-    size: "50 mm × 3 m",
-    material: "透明 PET＋银墨"
-  },
-  {
     id: "rose-music-strip-roll",
     category: "tapes",
     categoryName: "胶带 TAPES",
@@ -374,6 +286,15 @@ const products = [
   }
 ];
 
+const productTotal = products.length;
+const categoryTotal = new Set(products.map((product) => product.category)).size;
+document.querySelectorAll("[data-product-total]").forEach((counter) => {
+  counter.textContent = String(productTotal).padStart(2, "0");
+});
+document.querySelectorAll("[data-category-total]").forEach((counter) => {
+  counter.textContent = String(categoryTotal).padStart(2, "0");
+});
+
 const grid = document.querySelector("[data-product-grid]");
 const resultCount = document.querySelector("[data-result-count]");
 const emptyState = document.querySelector("[data-empty-state]");
@@ -381,11 +302,22 @@ const collectionsSection = document.querySelector("#collections");
 const favoriteCounters = document.querySelectorAll("[data-favorite-count]");
 const modal = document.querySelector("[data-product-modal]");
 const toast = document.querySelector("[data-toast]");
+const productPagination = document.createElement("nav");
+productPagination.className = "catalog-pagination catalog-pagination--products";
+productPagination.setAttribute("aria-label", "商品分页");
+productPagination.setAttribute("data-product-pagination", "");
+emptyState.insertAdjacentElement("afterend", productPagination);
 
 let activeFilter = "all";
 let activeProductId = null;
 let toastTimer;
 let favorites = readFavorites();
+let productPage = 1;
+const productPageMedia = window.matchMedia("(max-width: 780px)");
+
+function productsPerPage() {
+  return productPageMedia.matches ? 4 : 8;
+}
 
 function readFavorites() {
   try {
@@ -432,13 +364,64 @@ function productCard(product, index) {
     </article>`;
 }
 
+function paginationTokens(current, total) {
+  if (total <= 7) return Array.from({ length: total }, (_, index) => index + 1);
+  const pages = new Set([1, total, current - 1, current, current + 1]);
+  const ordered = [...pages].filter((page) => page >= 1 && page <= total).sort((a, b) => a - b);
+  const tokens = [];
+  ordered.forEach((page, index) => {
+    if (index && page - ordered[index - 1] > 1) tokens.push("ellipsis");
+    tokens.push(page);
+  });
+  return tokens;
+}
+
+function renderProductPagination(totalPages, totalItems) {
+  if (!totalItems) {
+    productPagination.hidden = true;
+    return;
+  }
+  productPagination.hidden = false;
+  const pages = paginationTokens(productPage, totalPages).map((token) => token === "ellipsis"
+    ? '<span class="catalog-pagination-ellipsis" aria-hidden="true">…</span>'
+    : `<button type="button" data-product-page="${token}" class="${token === productPage ? "is-active" : ""}" aria-current="${token === productPage ? "page" : "false"}" aria-label="第 ${token} 页">${token}</button>`
+  ).join("");
+  productPagination.innerHTML = `
+    <button type="button" data-product-page="${productPage - 1}" ${productPage === 1 ? "disabled" : ""} aria-label="上一页">‹</button>
+    ${pages}
+    <button type="button" data-product-page="${productPage + 1}" ${productPage === totalPages ? "disabled" : ""} aria-label="下一页">›</button>`;
+}
+
 function renderProducts() {
   const visible = getVisibleProducts();
-  grid.innerHTML = visible.map(productCard).join("");
+  const pageSize = productsPerPage();
+  const totalPages = Math.max(1, Math.ceil(visible.length / pageSize));
+  productPage = Math.min(productPage, totalPages);
+  const start = (productPage - 1) * pageSize;
+  const pageProducts = visible.slice(start, start + pageSize);
+  grid.dataset.pageItems = String(pageProducts.length);
+  grid.innerHTML = pageProducts.map(productCard).join("");
   grid.hidden = visible.length === 0;
   emptyState.hidden = visible.length !== 0;
   resultCount.textContent = String(visible.length);
   favoriteCounters.forEach((counter) => { counter.textContent = String(favorites.size); });
+  renderProductPagination(totalPages, visible.length);
+}
+
+productPageMedia.addEventListener("change", () => {
+  productPage = 1;
+  renderProducts();
+});
+
+function updateProductFavorite(id) {
+  const button = grid.querySelector(`[data-favorite="${id}"]`);
+  const product = products.find((item) => item.id === id);
+  if (!button || !product) return;
+  const isFavorite = favorites.has(id);
+  button.classList.toggle("is-favorite", isFavorite);
+  button.setAttribute("aria-pressed", String(isFavorite));
+  button.setAttribute("aria-label", `${isFavorite ? "取消收藏" : "收藏"}${product.name}`);
+  button.textContent = isFavorite ? "♥" : "♡";
 }
 
 function toggleFavorite(id) {
@@ -448,13 +431,15 @@ function toggleFavorite(id) {
   const adding = !favorites.has(id);
   adding ? favorites.add(id) : favorites.delete(id);
   saveFavorites();
-  renderProducts();
+  if (activeFilter === "favorites") renderProducts();
+  else updateProductFavorite(id);
   updateModalFavorite();
   showToast(adding ? `已把「${product.name}」放进收藏` : `已取消收藏「${product.name}」`);
 }
 
 function selectFilter(filter) {
   activeFilter = filter;
+  productPage = 1;
   document.querySelectorAll("[data-filter]").forEach((button) => {
     const selected = button.dataset.filter === filter;
     button.classList.toggle("is-active", selected);
@@ -496,16 +481,35 @@ function updateModalFavorite() {
   button.setAttribute("aria-pressed", String(isFavorite));
 }
 
-function showToast(message) {
+function showToast(message, options = {}) {
   clearTimeout(toastTimer);
-  toast.textContent = message;
+  toast.replaceChildren(document.createTextNode(message));
+  if (options.actionLabel && typeof options.onAction === "function") {
+    const action = document.createElement("button");
+    action.className = "toast-action";
+    action.type = "button";
+    action.textContent = options.actionLabel;
+    action.addEventListener("click", () => {
+      options.onAction();
+      toast.classList.remove("is-visible");
+    }, { once: true });
+    toast.append(action);
+  }
   toast.classList.add("is-visible");
-  toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2400);
+  toastTimer = setTimeout(() => toast.classList.remove("is-visible"), options.duration || 2400);
 }
 
 document.querySelector("[data-filters]").addEventListener("click", (event) => {
   const button = event.target.closest("[data-filter]");
   if (button) selectFilter(button.dataset.filter);
+});
+
+productPagination.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-product-page]");
+  if (!button || button.disabled) return;
+  productPage = Number(button.dataset.productPage);
+  renderProducts();
+  smoothScrollTo(collectionsSection);
 });
 
 grid.addEventListener("click", (event) => {

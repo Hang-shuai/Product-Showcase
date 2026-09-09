@@ -82,7 +82,13 @@ body.scheme-two {
 }
 
 .scheme-two .lolita-top-crown span { color: #e5c77f; }
-.scheme-two .site-header { padding-top: 14px; }
+.scheme-two .site-header {
+  padding-top: 14px;
+}
+
+.scheme-two .site-header::before {
+  background: linear-gradient(180deg, rgba(48, 18, 29, .8) 0%, rgba(63, 24, 39, .64) 68%, rgba(63, 24, 39, 0) 100%);
+}
 
 .scheme-two .nav-wrap {
   min-height: 70px;
