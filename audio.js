@@ -1,6 +1,5 @@
 (() => {
   const preferenceKey = "boiling-bubbles-sound-enabled-v1";
-  const noticeStorageKey = "boiling-bubbles-rose-notice-v3";
   const body = document.body;
   const theme = body.classList.contains("scheme-three")
     ? "midnight"
@@ -30,7 +29,7 @@
   let fadeFrame;
   let duckTimer;
   let gestureStartArmed = false;
-  const awaitingNoticeChoice = theme === "rose" && !hasCompletedSoundChoice();
+  const awaitingNoticeChoice = theme === "rose" && Boolean(document.querySelector("[data-first-visit-notice]"));
   let enabled = awaitingNoticeChoice ? false : readPreference();
 
   music.loop = true;
@@ -41,14 +40,6 @@
   function readPreference() {
     try {
       return localStorage.getItem(preferenceKey) === "true";
-    } catch {
-      return false;
-    }
-  }
-
-  function hasCompletedSoundChoice() {
-    try {
-      return localStorage.getItem(noticeStorageKey) === "dismissed";
     } catch {
       return false;
     }

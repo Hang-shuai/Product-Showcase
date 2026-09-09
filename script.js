@@ -3,7 +3,6 @@ const welcomeSkip = document.querySelector("[data-welcome-skip]");
 const firstVisitNotice = document.querySelector("[data-first-visit-notice]");
 const noticeCloseButtons = [...document.querySelectorAll("[data-notice-close]")];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const noticeStorageKey = "boiling-bubbles-rose-notice-v3";
 const welcomeStorageKey = document.body.classList.contains("scheme-three")
   ? "boiling-bubbles-welcome-scheme-three"
   : document.body.classList.contains("scheme-two")
@@ -13,12 +12,7 @@ let welcomeTimer;
 let noticeDismissedForPage = false;
 
 function hasDismissedNotice() {
-  if (noticeDismissedForPage) return true;
-  try {
-    return localStorage.getItem(noticeStorageKey) === "dismissed";
-  } catch {
-    return false;
-  }
+  return noticeDismissedForPage;
 }
 
 function showFirstVisitNotice() {
@@ -30,11 +24,6 @@ function showFirstVisitNotice() {
 function dismissFirstVisitNotice() {
   if (!firstVisitNotice) return;
   noticeDismissedForPage = true;
-  try {
-    localStorage.setItem(noticeStorageKey, "dismissed");
-  } catch {
-    // Keep the dismissal for the current page when storage is unavailable.
-  }
   firstVisitNotice.close();
   document.body.classList.remove("modal-open");
 }

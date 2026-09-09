@@ -4144,3 +4144,32 @@ body.scheme-two {
     font-size: 10px;
   }
 }
+
+/* Keep decorative mascots clear of mobile headings and artwork copy. */
+@media (max-width: 560px) {
+  .mascot--hero,
+  .scheme-two .mascot--hero {
+    right: -4%;
+    bottom: -3%;
+    width: 88px;
+  }
+
+  .mascot--collection,
+  .scheme-two .mascot--collection {
+    top: -132px;
+    right: -1%;
+    width: 70px;
+  }
+
+  .scheme-two .mascot--hero-friend-left {
+    left: -4%;
+    bottom: 1%;
+    width: 66px;
+  }
+
+  .scheme-two .mascot--hero-friend-right {
+    right: -4%;
+    bottom: 39%;
+    width: 68px;
+  }
+}

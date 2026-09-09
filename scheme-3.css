@@ -580,8 +580,10 @@ body.scheme-two {
   .scheme-two .hero-art { min-height: 410px; }
   .scheme-two .hero-card--back { transform: translate(-48px,-18px) rotate(-10deg) scale(.84); }
   .scheme-two .hero-card--front { transform: translate(42px,26px) rotate(7deg) scale(.84); }
-  .scheme-two .mascot--hero-friend-left { left: -2%; bottom: 4%; }
-  .scheme-two .mascot--hero-friend-right { right: -2%; bottom: 28%; }
+  .scheme-two .mascot--hero { right: -4%; bottom: -3%; width: 88px; }
+  .scheme-two .mascot--hero-friend-left { left: -4%; bottom: 1%; width: 66px; }
+  .scheme-two .mascot--hero-friend-right { right: -4%; bottom: 39%; width: 68px; }
+  .scheme-two .mascot--collection { top: -132px; right: -1%; width: 70px; }
   .scheme-two .cabinet-crown { width: calc(100% - 42px); gap: 9px; letter-spacing: .08em; }
   .scheme-two .section-heading { padding-inline: 22px; }
   .scheme-two .filter-row { border-radius: 15px; }
